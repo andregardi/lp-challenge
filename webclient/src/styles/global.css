@@ -1,0 +1,58 @@
+/* GERAL */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  color: #565656;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* MAIN */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* MEDIAS QUERIES */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1rem;
+  }
+
+  .headerLinks {
+    font-size: 0.85rem;
+  }
+
+  .searchTitle {
+    max-width: 90%;
+  }
+
+  .searchInput {
+    width: 15rem;
+  }
+
+  .mostVisited,
+  .lastVisited {
+    padding: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .shelf {
+    width: 100%;
+  }
+
+  h4 {
+    border-bottom: 1px solid;
+    width: fit-content;
+  }
+}

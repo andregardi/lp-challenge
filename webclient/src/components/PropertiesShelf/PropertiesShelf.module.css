@@ -1,0 +1,26 @@
+/* SHELFS SECTIONS */
+.sectionTitle {
+  margin: 0 0 0.8rem;
+  font-size: 2rem;
+  border-bottom: 1px solid #a9a9a9;
+}
+
+.shelfsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 1.5rem 0rem;
+  background-color: #f0f0f0;
+  background-color: #bdd5e5;
+}
+
+.mostVisited,
+.lastVisited {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4rem 2rem;
+  max-width: 100rem;
+  box-sizing: border-box;
+}

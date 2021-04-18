@@ -9,7 +9,9 @@ async function getProperty(root, { id }) {
       Property.visits
     ]
   };
-  return Property.findByPk(id, queryOptions);
+  const property = await Property.findByPk(id, queryOptions)
+  await property.visits.addVistNow();
+  return property;
 }
 
 module.exports = getProperty;

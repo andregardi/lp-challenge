@@ -1,5 +1,5 @@
 const {
-  GraphQLObjectType, GraphQLString, GraphQLList,
+  GraphQLObjectType, GraphQLString, GraphQLList, GraphQLInt
 } = require('graphql');
 const FactsType = require('./FactsType');
 const OthersType = require('./OthersType');
@@ -9,6 +9,7 @@ const VisitsType = require('./VisitsType');
 const PropertyType = new GraphQLObjectType({
   name: 'property',
   fields: () => ({
+    id: { type: GraphQLInt },
     homeImage: { type: GraphQLString },
     overview: { type: OverviewType },
     facts: { type: FactsType },

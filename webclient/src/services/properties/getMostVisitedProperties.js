@@ -1,9 +1,10 @@
-import { gql, useQuery } from "@apollo/client";
-import apolloClient from "../apollo";
+import { gql } from "@apollo/client";
+import apolloClient from "../apolloClient";
 
 const query = gql`
   query GetProperties {
     mostVisitedProperties {
+      id
       homeImage
       overview {
         price
@@ -15,7 +16,9 @@ const query = gql`
   }
 `;
 
+const mapData = (data) => data.mostVisitedProperties;
+
 const useMostVisitedProperties = () =>
-  useQuery(query, { client: apolloClient });
+  apolloClient.useQuery(query, { mapData });
 
 export default useMostVisitedProperties;

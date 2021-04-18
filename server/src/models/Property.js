@@ -5,8 +5,6 @@ const PropertyOthers = require('./PropertyOthers');
 const PropertyOverview = require('./PropertyOverview');
 const PropertyVisits = require('./PropertyVisits');
 
-// Could have been done with "$or" from the ORM,
-// but it was suggested to demonstrate some acknowledge in SQL
 const searchSqlQuery = `
   select * from properties
   join overviews on properties.id = overviews.propertyId
@@ -14,22 +12,45 @@ const searchSqlQuery = `
   or overviews.city LIKE :search_param
   or overviews.zipcode LIKE :search_param
   limit 5
+  offset :offset
+`;
+
+const countSearchSqlQuery = `
+select count(*) as total from properties
+join overviews on properties.id = overviews.propertyId
+where overviews.neighborhood LIKE :search_param
+or overviews.city LIKE :search_param
+or overviews.zipcode LIKE :search_param
 `;
 
 class Property extends Model {
   // Search by neighborhood, city, or a ZIP code
-  static async search(searchParam) {
+  // Could have been done with the ORM, but it was
+  // suggested to demonstrate acknowledge in SQL
+  static async search(searchParam, page) {
+    const limit = 5;
+    const offset = limit * (page - 1);
     const queryOptions = {
       type: QueryTypes.SELECT,
-      replacements: { search_param: `%${searchParam}%` }
+      replacements: { search_param: `%${searchParam}%`, offset }
     };
 
-    const rows = await this.sequelize.query(searchSqlQuery, queryOptions);
+    const selectRows = await this.sequelize.query(searchSqlQuery, queryOptions);
+    const countRows = await this.sequelize.query(
+      countSearchSqlQuery,
+      queryOptions
+    );
 
-    return rows.map((row) => {
+    const properties = selectRows.map((row) => {
       const { id, homeImage, ...overview } = row;
       return { id, homeImage, overview };
     });
+
+    const count = countRows[0].total;
+
+    const pages = Math.ceil(count / limit);
+
+    return { properties, pages };
   }
 }
 

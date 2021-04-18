@@ -1,0 +1,36 @@
+.shelf {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 15%;
+  min-width: 9rem;
+  margin: 0.5rem;
+  padding: 0.8rem;
+  background-color: #fff;
+  box-shadow: 3px 3px 10px #a9a9a9;
+  -webkit-box-shadow: 3px 3px 10px #a9a9a9;
+  -moz-box-shadow: 3px 3px 10px #a9a9a9;
+  color: #565656;
+}
+
+.propertyImage {
+  width: 100%;
+}
+
+.propertyInfos {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.propertyPrice,
+.propertyView {
+  margin: 0.5rem 0 0;
+}
+
+.propertyPrice span,
+.propertyView span {
+  margin-left: 0.3rem;
+  font-weight: bold;
+}

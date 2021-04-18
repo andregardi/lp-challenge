@@ -1,0 +1,50 @@
+/* SEARCH SECTION */
+.search {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 0;
+}
+
+.searchTitle {
+  max-width: 40%;
+  text-align: center;
+}
+
+.searchInput {
+  width: 30rem;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border: none;
+  outline: none;
+  background: #f3f3f3;
+  box-shadow: 3px 3px 10px #565656;
+  -webkit-box-shadow: 3px 3px 10px #565656;
+  -moz-box-shadow: 3px 3px 10px #565656;
+}
+
+.searchInput:focus {
+  background: #fff;
+}
+
+.searchForm {
+  position: relative;
+}
+
+.searchButton {
+  position: absolute;
+  right: 1rem;
+  top: 2.3rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25.874 24.8673L19.3042 18.5609C21.1397 16.5691 22.158 13.9591 22.1564 11.2505C22.1564 5.28611 17.3031 0.433472 11.3379 0.433472C5.37282 0.433472 0.520874 5.28611 0.520874 11.2505C0.520874 17.215 5.37351 22.069 11.3379 22.069C14.0838 22.0708 16.7268 21.0245 18.7275 19.1438L25.3068 25.457C25.3456 25.4942 25.3914 25.5234 25.4415 25.543C25.4916 25.5625 25.5451 25.572 25.5989 25.5709C25.6526 25.5698 25.7057 25.5581 25.7549 25.5365C25.8042 25.5149 25.8487 25.4838 25.8859 25.445C25.9232 25.4062 25.9524 25.3604 25.972 25.3103C25.9915 25.2602 26.001 25.2068 25.9999 25.153C25.9988 25.0992 25.9871 25.0462 25.9655 24.9969C25.9439 24.9477 25.9128 24.9031 25.874 24.8659V24.8673ZM1.33988 11.2505C1.33988 5.73793 5.82533 1.25248 11.3379 1.25248C16.8506 1.25248 21.3374 5.73793 21.3374 11.2505C21.3374 16.7632 16.8512 21.25 11.3379 21.25C5.82465 21.25 1.33988 16.7638 1.33988 11.2505Z' fill='%23565656'/%3E%3C/svg%3E%0A");
+  background-position: center;
+  background-size: contain;
+  border: none;
+  background-color: transparent;
+}
+
+.searchButton:hover {
+  cursor: pointer;
+}

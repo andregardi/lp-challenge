@@ -1,16 +1,20 @@
 const {
   GraphQLObjectType, GraphQLList, GraphQLString, GraphQLInt,
 } = require('graphql');
-const getProperties = require('./resolvers/getProperties');
+const getPaginatedProperties = require('./resolvers/getPaginatedProperties');
 const PropertyType = require('./types/PropertyType');
 const getMostVisitedProperties = require('./resolvers/getMostVisitedProperties');
 const getMostRecentProperties = require('./resolvers/getMostRecentProperties');
-const getSearchedProperties = require('./resolvers/getSearchedProperties');
+const getPaginatedSearch = require('./resolvers/getPaginatedSearch');
 const getProperty = require('./resolvers/getProperty');
+const PropertiesWithPagesType = require('./types/PropertiesWithPagesType');
 
-const properties = {
-  type: new GraphQLList(PropertyType),
-  resolve: getProperties,
+const paginatedProperties = {
+  type: PropertiesWithPagesType,
+  args: {
+    page: { type: GraphQLInt },
+  },
+  resolve: getPaginatedProperties,
 };
 
 const mostVisitedProperties = {
@@ -24,11 +28,12 @@ const mostRecentProperties = {
 };
 
 const searchProperties = {
-  type: new GraphQLList(PropertyType),
+  type: PropertiesWithPagesType,
   args: {
     searchParam: { type: GraphQLString },
+    page: { type: GraphQLInt },
   },
-  resolve: getSearchedProperties,
+  resolve: getPaginatedSearch,
 };
 
 const property = {
@@ -43,7 +48,7 @@ const query = new GraphQLObjectType({
   name: 'query',
   fields: () => ({
     property,
-    properties,
+    paginatedProperties,
     mostVisitedProperties,
     mostRecentProperties,
     searchProperties,
