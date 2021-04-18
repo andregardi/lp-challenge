@@ -1,7 +1,7 @@
 const Property = require('../../models/Property');
 
 async function getProperties() {
-  const associationOptions = {
+  const queryOptions = {
     include: [
       Property.overview,
       Property.facts,
@@ -9,7 +9,7 @@ async function getProperties() {
       Property.visits,
     ],
   };
-  return Property.findAll(associationOptions);
+  return Property.findAll(queryOptions);
 }
 
 module.exports = getProperties;

@@ -2,7 +2,6 @@ const connection = require('./database/connection');
 const importData = require('./database/importData');
 
 async function startServer(server) {
-  await connection.authenticate();
   await connection.sync({});
   console.info('INFO - Database sync complete.');
 
