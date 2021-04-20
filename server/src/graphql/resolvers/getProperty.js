@@ -9,7 +9,8 @@ async function getProperty(root, { id }) {
       Property.visits
     ]
   };
-  const property = await Property.findByPk(id, queryOptions)
+  const property = await Property.findByPk(id, queryOptions);
+  if (!property) throw new Error(`Property ID ${id} could not be found.`);
   await property.visits.addVistNow();
   return property;
 }

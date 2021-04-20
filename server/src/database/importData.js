@@ -11,7 +11,6 @@ const associationOptions = {
 };
 
 async function importData() {
-  console.info("Importing data from data.json into database");
   const promises = jsonData.map((jsonProperty) =>
     Property.create(jsonProperty, associationOptions)
   );

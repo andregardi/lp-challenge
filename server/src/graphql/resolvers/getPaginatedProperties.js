@@ -1,6 +1,6 @@
 const Property = require('../../models/Property');
 
-async function getPaginatedProperties(root, { page = 1 }) {
+async function getPaginatedProperties(root, { page }) {
   const limit = 5;
   const offset = 5 * (page - 1);
   const queryOptions = {
@@ -18,7 +18,6 @@ async function getPaginatedProperties(root, { page = 1 }) {
   );
   const pages = Math.ceil(count / limit);
 
-  console.log({ properties });
   return { pages, properties };
 }
 

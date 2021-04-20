@@ -57,7 +57,6 @@ class Property extends Model {
 Property.init(
   {
     homeImage: DataTypes.STRING,
-
     images: DataTypes.JSON
   },
   {
