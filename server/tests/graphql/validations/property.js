@@ -9,7 +9,7 @@ const overviewSchema = joi
     address: joi.string(),
     city: joi.string(),
     zipcode: joi.number(),
-    available: joi.bool()
+    available: joi.bool(),
   })
   .options({ presence: 'required' });
 
@@ -20,7 +20,7 @@ const factsSchema = joi
     heating: joi.string(),
     parking: joi.string(),
     lot: joi.string(),
-    stories: joi.number()
+    stories: joi.number(),
   })
   .options({ presence: 'required' });
 
@@ -30,12 +30,12 @@ const othersSchema = {
   pool: joi.bool(),
   virtualTourLink: joi.string(),
   parcelNumber: joi.number(),
-  lastSold: joi.string()
+  lastSold: joi.string(),
 };
 
 const visitsSchema = {
   total: joi.number(),
-  lastVisited: joi.string()
+  lastVisited: joi.string(),
 };
 
 const propertySchema = joi
@@ -46,7 +46,7 @@ const propertySchema = joi
     facts: factsSchema,
     others: othersSchema,
     visits: visitsSchema,
-    images: joi.array().items(joi.string())
+    images: joi.array().items(joi.string()),
   })
   .options({ presence: 'required' });
 
@@ -57,5 +57,5 @@ const propertiesSchema = joi
 
 module.exports = {
   propertySchema,
-  propertiesSchema
+  propertiesSchema,
 };

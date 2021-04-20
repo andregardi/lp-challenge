@@ -16,7 +16,7 @@ describe('GraphQL', () => {
 
   describe('property query', () => {
     it('it should throw error on requesting for invalid id', async () => {
-      const invalidId = 11;
+      const invalidId = -11;
       const query = `{
         property(id: ${invalidId}){
           homeImage
