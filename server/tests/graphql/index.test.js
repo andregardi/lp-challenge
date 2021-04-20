@@ -1,10 +1,11 @@
 const supertest = require('supertest');
-const server = require('../../src/server');
+const server = require('../../src/server/server');
 const propertyQuery = require('./queries/property.js');
 const paginatedPropertiesQuery = require('./queries/paginatedProperties.js');
 const mostVisitedPropertiesQuery = require('./queries/mostVisitedProperties.js');
 const mostRecentPropertiesQuery = require('./queries/mostRecentProperties.js');
 const searchPropertiesQuery = require('./queries/searchProperties.js');
+const { propertySchema, propertiesSchema } = require('./validations/property');
 
 const request = supertest(server);
 
@@ -38,12 +39,9 @@ describe('GraphQL', () => {
 
       const { property } = response.body.data;
 
-      expect(property.id).toEqual(expect.any(Number));
-      expect(property.overview).toEqual(expect.any(Object));
-      expect(property.facts).toEqual(expect.any(Object));
-      expect(property.others).toEqual(expect.any(Object));
-      expect(property.visits).toEqual(expect.any(Object));
-      expect(property.images).toEqual(expect.any(Array));
+      const validationErrors = propertySchema.validate(property).error;
+
+      expect(validationErrors).toBeFalsy();
     });
   });
 
@@ -53,9 +51,12 @@ describe('GraphQL', () => {
       .send({ query: paginatedPropertiesQuery });
 
     const { paginatedProperties } = response.body.data;
+    const validationErrors = propertiesSchema.validate(
+      paginatedProperties.properties
+    ).error;
 
     expect(paginatedProperties.pages).toEqual(expect.any(Number));
-    expect(paginatedProperties.properties).toEqual(expect.any(Array));
+    expect(validationErrors).toBeFalsy();
   });
 
   it('should query mostVisitedProperties', async () => {
@@ -64,8 +65,10 @@ describe('GraphQL', () => {
       .send({ query: mostVisitedPropertiesQuery });
 
     const { mostVisitedProperties } = response.body.data;
+    const validationErrors = propertiesSchema.validate(mostVisitedProperties)
+      .error;
 
-    expect(mostVisitedProperties).toEqual(expect.any(Array));
+    expect(validationErrors).toBeFalsy();
   });
 
   it('should query mostRecentProperties', async () => {
@@ -74,8 +77,10 @@ describe('GraphQL', () => {
       .send({ query: mostRecentPropertiesQuery });
 
     const { mostRecentProperties } = response.body.data;
+    const validationErrors = propertiesSchema.validate(mostRecentProperties)
+      .error;
 
-    expect(mostRecentProperties).toEqual(expect.any(Array));
+    expect(validationErrors).toBeFalsy();
   });
 
   it('should query searchProperties', async () => {

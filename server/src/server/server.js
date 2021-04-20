@@ -1,8 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const { graphqlHTTP } = require('express-graphql');
-const schema = require('./graphql/schema');
 const asyncSetup = require('./asyncSetup');
+const graphql = require('../graphql/index');
 
 const server = express();
 
@@ -13,15 +12,8 @@ server.use(cors());
 server.use(express.static('public'));
 
 // Setup the GraphQL
-server.use(
-  '/graphql',
-  graphqlHTTP(() => ({
-    schema,
-    graphiql: true,
-    pretty: true
-  }))
-);
+server.use('/graphql', graphql);
 
-server.ready = asyncSetup(server)
+server.ready = asyncSetup(server);
 
 module.exports = server;
