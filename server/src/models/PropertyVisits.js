@@ -16,15 +16,15 @@ PropertyVisits.init(
       type: DataTypes.DATE,
       get() {
         return this.getDataValue('lastVisited').toISOString();
-      }
-    }
+      },
+    },
   },
   {
     sequelize,
     modelName: 'visits',
     name: {
-      singular: 'visits'
-    }
+      singular: 'visits',
+    },
   }
 );
 

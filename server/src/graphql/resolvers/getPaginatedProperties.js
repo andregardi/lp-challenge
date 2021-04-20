@@ -10,8 +10,8 @@ async function getPaginatedProperties(root, { page }) {
       Property.overview,
       Property.facts,
       Property.others,
-      Property.visits
-    ]
+      Property.visits,
+    ],
   };
   const { count, rows: properties } = await Property.findAndCountAll(
     queryOptions

@@ -1,5 +1,8 @@
 const {
-  GraphQLObjectType, GraphQLList, GraphQLString, GraphQLInt,
+  GraphQLObjectType,
+  GraphQLList,
+  GraphQLString,
+  GraphQLInt,
 } = require('graphql');
 const getPaginatedProperties = require('./resolvers/getPaginatedProperties');
 const PropertyType = require('./types/PropertyType');

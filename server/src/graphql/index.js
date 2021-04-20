@@ -3,13 +3,13 @@ const { GraphQLSchema } = require('graphql');
 const query = require('./query');
 
 const schema = new GraphQLSchema({
-  query
+  query,
 });
 
 const graphqlConfig = {
   schema,
   graphiql: true,
-  pretty: true
+  pretty: true,
 };
 
-module.exports = graphqlHTTP(graphqlConfig);;
+module.exports = graphqlHTTP(graphqlConfig);

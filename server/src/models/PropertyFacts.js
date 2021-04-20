@@ -10,14 +10,14 @@ PropertyFacts.init(
     heating: DataTypes.STRING,
     parking: DataTypes.STRING,
     lot: DataTypes.STRING,
-    stories: DataTypes.INTEGER
+    stories: DataTypes.INTEGER,
   },
   {
     sequelize,
     modelName: 'facts',
     name: {
-      singular: 'facts'
-    }
+      singular: 'facts',
+    },
   }
 );
 

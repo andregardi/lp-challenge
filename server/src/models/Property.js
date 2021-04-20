@@ -32,7 +32,7 @@ class Property extends Model {
     const offset = limit * (page - 1);
     const queryOptions = {
       type: QueryTypes.SELECT,
-      replacements: { search_param: `%${searchParam}%`, offset }
+      replacements: { search_param: `%${searchParam}%`, offset },
     };
 
     const selectRows = await this.sequelize.query(searchSqlQuery, queryOptions);
@@ -57,11 +57,11 @@ class Property extends Model {
 Property.init(
   {
     homeImage: DataTypes.STRING,
-    images: DataTypes.JSON
+    images: DataTypes.JSON,
   },
   {
     sequelize,
-    modelName: 'property'
+    modelName: 'property',
   }
 );
 

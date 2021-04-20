@@ -1,5 +1,9 @@
 const {
-  GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLFloat, GraphQLBoolean,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLInt,
+  GraphQLFloat,
+  GraphQLBoolean,
 } = require('graphql');
 
 const OthersType = new GraphQLObjectType({
