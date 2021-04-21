@@ -42,8 +42,8 @@ class Property extends Model {
     );
 
     const properties = selectRows.map((row) => {
-      const { id, homeImage, ...overview } = row;
-      return { id, homeImage, overview };
+      const { id, homeImage, images, ...overview } = row;
+      return { id, homeImage, images: JSON.parse(images), overview };
     });
 
     const count = countRows[0].total;
