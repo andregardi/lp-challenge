@@ -1,4 +1,4 @@
-# LP-Chanllenge
+# LP-Challenge
 
 ## Overview
 Fullstack code challenge using:
