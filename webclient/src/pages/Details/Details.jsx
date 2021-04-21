@@ -1,24 +1,24 @@
 import { useParams } from "react-router-dom";
 import useGetPropertyById from "../../services/properties/getPropertyById";
-import ImagesArea from "./ImagesArea";
+import ImagesArea from "./ImagesArea/ImagesArea";
+import InfoArea from "./InfoArea/InfoArea";
+import styles from "./Details.module.css";
 
-const useGetPropertyByIdContent = (propertyId) => {
-  const { loading, error, data } = useGetPropertyById(propertyId);
+const Details = () => {
+  const { propertyId } = useParams();
+  const { loading, error, data } = useGetPropertyById(parseInt(propertyId));
 
   if (loading) return <h2>Loading...</h2>;
   if (error) return <h4>Error loading data</h4>;
 
   return (
     <div>
-      <ImagesArea {...data} />
+      <div className={styles.detailsPageConainer}>
+        <ImagesArea {...data}></ImagesArea>
+        <InfoArea {...data} />
+      </div>
     </div>
   );
-};
-
-const Details = () => {
-  const { propertyId } = useParams();
-  const content = useGetPropertyByIdContent(parseInt(propertyId));
-  return content;
 };
 
 export default Details;

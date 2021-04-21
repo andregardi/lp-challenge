@@ -9,15 +9,15 @@ const Header = () => {
           <Link className={styles.headerLinks} to="/">
             Home
           </Link>
-          <Link className={styles.headerLinks} to="/list/page/1">
+          <Link className={styles.headerLinks} to="/list">
             List
           </Link>
-          <h1>Luxury Presence</h1>
-          <Link className={styles.headerLinks} to="/">
-            Home
+          <h1>LP Challenge</h1>
+          <Link className={styles.headerLinks} to="/list?searchParam=malibu">
+            Search
           </Link>
-          <Link className={styles.headerLinks} to="/page2">
-            page2
+          <Link className={styles.headerLinks} to="/details/1">
+            Details
           </Link>
         </nav>
       </header>

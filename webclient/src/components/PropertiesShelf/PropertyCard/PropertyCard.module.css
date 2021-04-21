@@ -34,3 +34,15 @@
   margin-left: 0.3rem;
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  .shelf {
+    width: calc(50% - 3em);;
+  }
+}
+
+@media (max-width: 480px) {
+  .shelf {
+    width: 100%;
+  }
+}

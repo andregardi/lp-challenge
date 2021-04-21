@@ -1,9 +1,17 @@
-import { Switch, Route, Redirect } from "react-router-dom";
+import { useEffect } from "react";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import Details from "./Details/Details";
 import Home from "./Home/Home";
 import List from "./List/List";
 
 const PagesRouter = () => {
+  const { pathname } = useLocation();
+  const urlParams = useLocation().search;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname, urlParams]);
+
   return (
     <main>
       <Switch>
@@ -11,23 +19,12 @@ const PagesRouter = () => {
           <Home />
         </Route>
 
-        <Route path={["/list/page/:page", "/search/:searchParam/page/:page"]}>
+        <Route path="/list">
           <List />
         </Route>
 
         <Route path="/details/:propertyId">
           <Details />
-        </Route>
-
-        <Route path="/list">
-          <Redirect to="/list/page/1" />
-        </Route>
-
-        <Route path="/search/:searchParam">
-          <Redirect
-            from="/search/:searchParam"
-            to="/search/:searchParam/page/1"
-          />
         </Route>
 
         <Route path="/">

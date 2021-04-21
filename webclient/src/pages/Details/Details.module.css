@@ -1,0 +1,10 @@
+.detailsPageConainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 3rem;
+  align-items: flex-start;
+  max-width: 100rem;
+  margin: auto;
+}

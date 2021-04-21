@@ -7,7 +7,7 @@ const SearchSession = () => {
   const searchSubmit = (event) => {
     event.preventDefault();
     const { value } = event.target.elements["search-param"];
-    history.push(`/list/page/1?searchParam=${value}`);
+    history.push(`/list/?searchParam=${value}`);
   };
 
   return (
@@ -16,8 +16,7 @@ const SearchSession = () => {
         The Leading World Class Real Estate Brokerage
       </h2>
       <form
-        action="/"
-        method="post"
+        autoComplete="off"
         className={styles.searchForm}
         onSubmit={searchSubmit}
       >

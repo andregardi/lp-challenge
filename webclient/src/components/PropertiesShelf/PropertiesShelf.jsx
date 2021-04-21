@@ -16,7 +16,7 @@ const PropertiesShelf = (props) => {
   const { title, service } = props;
   const content = useContent(service);
   return (
-    <section className={styles.mostVisited}>
+    <section className={styles.shelf}>
       <h2 className={styles.sectionTitle}>{title}</h2>
       <div className={styles.shelfsContainer}>{content}</div>
     </section>

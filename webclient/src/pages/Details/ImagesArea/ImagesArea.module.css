@@ -1,0 +1,49 @@
+/* IMAGES */
+.propertyImagesDetail {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.propertyMainContainer {
+  width: 100%;
+  padding: 1rem;
+}
+
+.propertyMainImage {
+  width: 100%;
+}
+
+.propertyThumbsContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.propertyThumb {
+  width: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+  object-fit: cover;
+
+}
+
+@media (max-width: 768px) {
+  .propertyImagesDetail {
+    width: 100%;
+  }
+
+  .overviewBox {
+    width: 47%;
+  }
+}
+
+@media (max-width: 600px) {
+  .propertyMainContainer,
+  .propertyThumb {
+    padding: 0.5rem;
+  }
+}

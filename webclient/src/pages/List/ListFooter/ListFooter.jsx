@@ -1,21 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./ListFooter.module.css";
+import { ReactComponent as ArrowIcon } from "./arrowIcon.svg";
 
 const ListFooter = (props) => {
-  const { currentPage, pagesCount } = props;
-  const nextLink = currentPage < pagesCount && (
-    <Link to={`/list/page/${currentPage + 1}`}>next</Link>
+  const { currentPage, pagesCount, searchParam } = props;
+  const searchUrlParam = searchParam ? `&searchParam=${searchParam}` : "";
+
+  const activeNextLink = currentPage < pagesCount;
+  const activePreviewsLink = currentPage > 1;
+
+  const grayFill = "#ccc";
+
+  const nextLink = activeNextLink ? (
+    <Link to={`/list?page=${currentPage + 1}${searchUrlParam}`}>
+      <ArrowIcon className={styles.nextIcon} />
+    </Link>
+  ) : (
+    <ArrowIcon className={styles.nextIcon} fill={grayFill} />
   );
-  const previewsLink = currentPage > 1 && (
-    <Link to={`/list/page/${currentPage - 1}`}>previews</Link>
+
+  const previewsLink = activePreviewsLink ? (
+    <Link to={`/list?page=${currentPage - 1}${searchUrlParam}`}>
+      <ArrowIcon className={styles.previewsIcon} />
+    </Link>
+  ) : (
+    <ArrowIcon className={styles.previewsIcon} fill={grayFill} />
   );
+
   return (
-    <div>
+    <div className={styles.listFooter}>
       <span>Listing by page: 5</span>
-      {previewsLink}
       <span>
         page {currentPage} of {pagesCount}
       </span>
+      {previewsLink}
       {nextLink}
     </div>
   );

@@ -1,8 +1,9 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import usePaginatedProperties from "../../services/properties/getPaginatedProperties";
 import usePaginatedSearch from "../../services/properties/getPaginatedSearch";
 import ListCard from "./ListCard/ListCard";
 import ListFooter from "./ListFooter/ListFooter";
+import styles from "./List.module.css";
 
 const useContent = (page, searchParam) => {
   const hook = searchParam ? usePaginatedSearch : usePaginatedProperties;
@@ -18,19 +19,23 @@ const useContent = (page, searchParam) => {
   return (
     <>
       {mappedProperties}
-      <ListFooter currentPage={parseInt(page)} pagesCount={parseInt(pages)} />
+      <ListFooter
+        currentPage={parseInt(page)}
+        searchParam={searchParam}
+        pagesCount={parseInt(pages)}
+      />
     </>
   );
 };
 
 const List = () => {
-  const { page } = useParams();
-  const searchParam = new URLSearchParams(useLocation().search).get(
-    "searchParam"
-  );
+  const urlParams = new URLSearchParams(useLocation().search);
+  const searchParam = urlParams.get("searchParam");
+  const page = urlParams.get("page") || 1;
+
   const content = useContent(page, searchParam);
   return (
-    <div>
+    <div className={styles.container}>
       <h1>LIST OF HOMES</h1>
       {content}
     </div>

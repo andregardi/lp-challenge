@@ -1,0 +1,25 @@
+.listFooter {
+  margin: 1.5em 0;
+  text-align: right;
+}
+
+.listFooter svg, span {
+  vertical-align: middle;
+}
+
+.listFooter span {
+  margin-right: 1em;
+}
+
+.nextIcon {
+  vertical-align: middle;
+
+  height: 15px;
+}
+
+.previewsIcon {
+  vertical-align: middle;
+
+  height: 15px;
+  transform: rotate(180deg);
+}
